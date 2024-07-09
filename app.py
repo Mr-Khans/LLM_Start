@@ -1,3 +1,4 @@
+#streamlit run app.py
 import streamlit as st 
 from langchain.llms import LlamaCpp
 from langchain.embeddings import LlamaCppEmbeddings
@@ -9,7 +10,7 @@ from langchain.vectorstores import Chroma
 
 
 # Customize the layout
-st.set_page_config(page_title="DOCAI", page_icon="🤖", layout="wide", )     
+st.set_page_config(page_title="LLM_start", page_icon="🤖", layout="wide", )     
 st.markdown(f"""
             <style>
             .stApp {{background-image: url("https://images.unsplash.com/photo-1509537257950-20f875b03669?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80"); 
@@ -42,7 +43,7 @@ llm = LlamaCpp(model_path="./models/llama-7b.ggmlv3.q2_K.bin")
 embeddings = LlamaCppEmbeddings(model_path="models/llama-7b.ggmlv3.q2_K.bin")
 llm_chain = LLMChain(llm=llm, prompt=prompt)
 
-st.title("📄 Document Conversation 🤖")
+st.title("📄 Document Loader for LLM🤖")
 uploaded_file = st.file_uploader("Upload an article", type="txt")
 
 if uploaded_file is not None:
@@ -66,3 +67,4 @@ if uploaded_file is not None:
         query_llm = LLMChain(llm=llm, prompt=prompt)
         response = query_llm.run({"context": context, "question": question})        
         st.write(response)
+        
