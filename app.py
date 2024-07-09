@@ -1,4 +1,4 @@
-#streamlit run app.py
+#
 import streamlit as st 
 from langchain.llms import LlamaCpp
 from langchain.embeddings import LlamaCppEmbeddings
